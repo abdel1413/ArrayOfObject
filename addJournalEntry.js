@@ -34,7 +34,8 @@ function tableForEvents(event, journal) {
     
     for (let i = 0; i < journal.length; i++) {
         let entry = journal[i], index = 0;
-         let pizzas = entry.events;
+        let pizzas = entry.events;
+        
         //collect only pizzas and put in the pizzArray
         for (let p = 0; p < pizzas.length; p++) {
             if (pizzas[p] === 'pizza') {
@@ -79,3 +80,29 @@ function findEveryTypeOfEvent(journal) {
 }
 
 console.log(findEveryTypeOfEvent(journal))
+
+//find correlation of all events
+for (let ev of findEveryTypeOfEvent(journal)) {
+    console.log(ev ," : ", phi(tableForEvents(ev, journal)))
+}
+
+//find correlation > 0.1 or < -0.1
+for (let c of findEveryTypeOfEvent(journal)) {
+    
+    //save value of phi in correlation
+    let correlation = phi(tableForEvents(c, journal))
+    if (correlation > .1 || correlation < -.1) {
+        console.log(c, ":" , correlation)
+    }
+}
+
+//filter correlation having strong  positive effect and that 
+//of strong negative effect
+//add new value to journal events
+for (let co of journal) {
+    if (co.events.includes('peanut') && !co.events.includes('brushed teeth')) {
+       co.events.push("peanut teeth")
+    }
+}
+ console.log(phi(tableForEvents('peanut teeth', journal)))
+ //=> peanut teeth : 1
