@@ -37,6 +37,17 @@ console.log(collection);
 //remove first elt and put in at end
 collection.push(collection.shift());
 
+//concatinate and slice
+function concaSlice(array, index) {
+  let slicing = array.slice(0, index); //=>a,b,
+  let concatinating = array.slice(index + 1); //=>d,e,f,g
+  return slicing.concat(concatinating); //==> [a,b,d,e,f,g]
+
+  //short cat
+  //return array.slice(0, index).concat(array.slice(index + 1));
+}
+console.log(concaSlice(["a", "b", "c", "d", "e", "f", "g"], 2));
+
 //delete
 collection.splice(2, 1); //1st arg is elt to delete, 2nd arg is nb of elt to delete
 
@@ -68,7 +79,7 @@ var response = { data: [{ users: [1, 2, 3] }, { users: [4, 5, 6] }] };
 
 var user = response.data.map((o) => o.users);
 for (let u of users) {
-  console.log(u)
+  console.log(u);
 }
 
 //connect both arrays into a single array
