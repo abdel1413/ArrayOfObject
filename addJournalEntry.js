@@ -29,8 +29,18 @@ function tableForEvents(event, journal) {
     //create an empty table  and initialize it to zero
     //where we going to store those events
     let table = [0, 0, 0, 0]
+    let pizzasArray = [];
+   
+    
     for (let i = 0; i < journal.length; i++) {
         let entry = journal[i], index = 0;
+         let pizzas = entry.events;
+        //collect only pizzas and put in the pizzArray
+        for (let p = 0; p < pizzas.length; p++) {
+            if (pizzas[p] === 'pizza') {
+                pizzasArray.push(pizzas[p])
+            }
+        }
         if (entry.events.include(event)) {
             index +=1
         }
@@ -40,8 +50,27 @@ function tableForEvents(event, journal) {
         }
         table[index] += 1;
     }
-
+    console.log(pizzasArray)
     return table
 }
 console.log(tableForEvents('pizza',journal))
 
+
+//find all the events that occured in the journal
+function displayJournalEvents(journal) {
+    
+    let events = [];
+    for (let entry of journal) {
+        console.log(entry)
+        for (let event of entry.events) {
+            console.log(event)
+            if (!events.includes(event)) {
+                events.push(event)
+            }
+
+        }
+    }
+    return events
+}
+
+console.log(displayJournalEvents(journal))
