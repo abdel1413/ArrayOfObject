@@ -57,13 +57,18 @@ console.log(tableForEvents('pizza',journal))
 
 
 //find all the events that occured in the journal
-function displayJournalEvents(journal) {
+function findEveryTypeOfEvent(journal) {
     
+    //create an empty array where we'll store each event
     let events = [];
+    //get all the element in journal =>objects
     for (let entry of journal) {
-        console.log(entry)
+       
+        //loop thru values from events 
         for (let event of entry.events) {
-            console.log(event)
+          
+            //check if it contains the event in the values
+            //add to event  new array otherwise
             if (!events.includes(event)) {
                 events.push(event)
             }
@@ -73,4 +78,4 @@ function displayJournalEvents(journal) {
     return events
 }
 
-console.log(displayJournalEvents(journal))
+console.log(findEveryTypeOfEvent(journal))
