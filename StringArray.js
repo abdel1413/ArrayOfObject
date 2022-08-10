@@ -38,3 +38,16 @@ console.log(joined);
 //we can access string as we do for array element
 console.log(sentence[9]); //=>a
 console.log(sentence[0]); //=> T
+
+//function using rest parametor (... param)
+function max(...numbers) {
+  let result = -Infinity;
+  for (let number of numbers) {
+    if (number < result) {
+      result = number;
+    }
+  }
+  return result;
+}
+
+console.log(max([4, 1, 9, -2])); //=>9
